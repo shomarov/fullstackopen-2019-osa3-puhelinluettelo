@@ -22,7 +22,7 @@ app.get('/info', (request, response) => {
 ${new Date()}`)
 })
 
-app.get('/api/persons', (request, response) => {
+app.get('/api/persons', (request, response, next) => {
     Person.find({}).then(people => {
         response.json(people.map(person => person.toJSON()))
     })
@@ -49,13 +49,16 @@ app.post('/api/persons', (request, response, next) => {
         number: body.number,
     })
 
-    person.save().then(savedPerson => {
-        response.json(savedPerson.toJSON())
-    })
+    person
+        .save()
+        .then(savedPerson => savedPerson.toJSON())
+        .then(savedAndFormattedPerson => {
+            response.json(savedAndFormattedPerson)
+        })
         .catch(error => next(error))
 })
 
-app.put('/api/persons/:id', (request, response) => {
+app.put('/api/persons/:id', (request, response, next) => {
     const body = request.body
 
     const person = {
@@ -63,17 +66,18 @@ app.put('/api/persons/:id', (request, response) => {
         number: body.number
     }
 
-    Person.findByIdAndUpdate(request.params.id, person, { new: true })
+    Person.findByIdAndUpdate(request.params.id, person, { new: true, runValidatiors: true })
         .then(savedPerson => {
             response.json(savedPerson.toJSON())
         })
         .catch(error => next(error))
 })
 
-app.delete('/api/persons/:id', (request, response) => {
+app.delete('/api/persons/:id', (request, response, next) => {
     Person.findByIdAndDelete(request.params.id).then(
         response.status(204).end()
     )
+    .catch(error => next(error))
 })
 
 const unknownEndpoint = (request, response) => {
