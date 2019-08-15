@@ -1,5 +1,5 @@
 {
-  "name": "fullstackopen-2019-osa3-puhelinluettelon-backend",
+  "name": "fullstackopen-2019-osa3-puhelinluettelo",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,21 +8,21 @@
     "watch": "nodemon index.js",
     "lint": "eslint .",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build:ui": "rm -rf build && cd ~/Study/fullstackopen-2019/osa3/puhelinluettelo && npm run build --prod && cp -r build ~/Study/fullstackopen-2019-osa3-puhelinluettelon-backend",
+    "build:ui": "rm -rf build && cd ~/Study/fullstackopen-2019/osa3/puhelinluettelo-frontend && npm run build --prod && cp -r build ~/Study/fullstackopen-2019-osa3-puhelinluettelo-fullstack",
     "deploy": "git push heroku master",
     "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && git push && npm run deploy",
     "logs:prod": "heroku logs --tail"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/shomarov-edu/fullstackopen-2019-osa3-puhelinluettelon-backend.git"
+    "url": "git+https://github.com/shomarov-edu/fullstackopen-2019-osa3-puhelinluettelo.git"
   },
   "author": "Artur Shomarov",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/shomarov-edu/fullstackopen-2019-osa3-puhelinluettelon-backend/issues"
+    "url": "https://github.com/shomarov-edu/fullstackopen-2019-osa3-puhelinluettelo/issues"
   },
-  "homepage": "https://github.com/shomarov-edu/fullstackopen-2019-osa3-puhelinluettelon-backend#readme",
+  "homepage": "https://github.com/shomarov-edu/fullstackopen-2019-osa3-puhelinluettelo#readme",
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^8.0.0",
