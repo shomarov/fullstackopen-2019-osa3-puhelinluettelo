@@ -107,5 +107,3 @@ const PORT = process.env.PORT
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`)
 })
-
-// adding this line to test npm deploy script
